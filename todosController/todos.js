@@ -10,7 +10,7 @@ class TodosController {
 
   async getAllTodos(req, res) {
     try {
-      const todos = await Todo.find();
+      const todos = await Todo.find().populate('todos');
       res.json(todos);
     } catch (error) {
       console.log(error);
@@ -26,7 +26,7 @@ class TodosController {
       });
     }
     try {
-      const todos = await Todo.findById(id);
+      const todos = await Todo.findById(id).populate();
       res.json(todos);
     } catch (error) {
       console.log(error);
